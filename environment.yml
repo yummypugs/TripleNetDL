@@ -1,0 +1,16 @@
+name: triplenet
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python==3.9.2
+  - pytorch==1.11.0
+  - torchvision==0.12.0
+  - torchaudio==0.11.0
+  - cudatoolkit=11.3
+  - ca-certificates
+  - openssl
+  - numpy==1.22.3
+  - certifi
+  - ipykernel
+prefix: C:\Users\alexa\mambaforge\envs\triplenet
