@@ -61,8 +61,8 @@ class Solver(object):
         else:
             self.device = torch.device('cpu')
 
-        self.model = triplenet_s().to(self.device)
-        # self.model = triplenet_b().to(self.device)
+        # self.model = triplenet_s().to(self.device)
+        self.model = triplenet_b().to(self.device)
         num_params = sum(p.numel() for p in self.model.parameters() if p.requires_grad) ## This is our addition
         print(f"The model has {num_params} trainable parameters.") ## This is our addition
 
