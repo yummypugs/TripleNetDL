@@ -21,8 +21,8 @@ def main():
     parser = argparse.ArgumentParser(description="cifar-10 with PyTorch")
     parser.add_argument('--lr', default=0.001, type=float, help='learning rate')
     parser.add_argument('--epoch', default=200, type=int, help='number of epochs tp train for')
-    parser.add_argument('--trainBatchSize', default=100, type=int, help='training batch size')
-    parser.add_argument('--testBatchSize', default=100, type=int, help='testing batch size')
+    parser.add_argument('--trainBatchSize', default=64, type=int, help='training batch size')
+    parser.add_argument('--testBatchSize', default=64, type=int, help='testing batch size')
     parser.add_argument('--cuda', default=torch.cuda.is_available(), type=bool, help='whether cuda is in use')
     parser.add_argument('--pre-trained', default=True, help="use pre-trained model")
     args = parser.parse_args()
@@ -63,8 +63,8 @@ class Solver(object):
 
         self.model = triplenet_s().to(self.device)
         # self.model = triplenet_b().to(self.device)
-        num_params = sum(p.numel() for p in self.model.parameters() if p.requires_grad)
-        print(f"The model has {num_params} trainable parameters.")
+        num_params = sum(p.numel() for p in self.model.parameters() if p.requires_grad) ## This is our addition
+        print(f"The model has {num_params} trainable parameters.") ## This is our addition
 
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.lr)
         self.scheduler = optim.lr_scheduler.MultiStepLR(self.optimizer, milestones=[75, 150], gamma=0.5)
