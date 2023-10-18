@@ -135,7 +135,7 @@ class TripleNet(nn.Module):
         
         ch_list = [  160, 256, 320, 480, 1080]
         gr       = [  32, 16, 20, 40,160]
-        n_layers = [   6, 16, 18, 24,  2]
+        n_layers = [   6, 16, 18, 24,  2] ## DL: I think this is wrong!!
         downSamp = [   1,  0,  1,  1,  0]
         
         self.base = nn.ModuleList([])

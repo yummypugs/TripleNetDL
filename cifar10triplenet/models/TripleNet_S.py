@@ -133,14 +133,14 @@ class TripleNet(nn.Module):
         grmul = 1.7
         drop_rate = 0.1
         
-        ch_list = [  128, 192, 256, 320, 720]
+        ch_list = [  128, 192, 256, 320, 720] ## DL: Why is ch_list different to troplenet_b
         gr       = [  32, 16, 20, 40,160]
         n_layers = [   6, 16, 16, 16,  2]
         downSamp = [   1,  0,  1,  1,  0]
         
         self.base = nn.ModuleList([])
 
-        # First Layer: Standard Conv3x3, Stride=2
+        # First Layer: Standard Conv3x3, Stride=2 ## DL: First Layer
         self.base.append ( ConvLayer(in_channels=3, out_channels=first_ch[0], kernel=3, stride=2,  bias=False) )
         # Second Layer
         self.base.append ( ConvLayer(first_ch[0], first_ch[1],  kernel=second_kernel) )
@@ -149,19 +149,19 @@ class TripleNet(nn.Module):
 
         ch = first_ch[1]
         
-        # First Block
+        # First Block ## Triple Block 1
         self.base.append ( DenseLayer(ch, 32, kernel=3, stride=1,  bias=False) ) 
         self.base.append ( DenseLayer(96, 32, kernel=3, stride=1,  bias=False) )
         self.base.append ( DenseLayer(128, 32, kernel=3, stride=1,  bias=False) )
         self.base.append ( DenseLayer(160, 32, kernel=3, stride=1,  bias=False) )
         self.base.append ( DenseLayer(192, 32, kernel=3, stride=1,  bias=False) )
         self.base.append ( DenseLayer(224, 32, kernel=3, stride=1,  bias=False) )        
-        self.base.append ( ConvLayer(256, ch_list[0], kernel=1) )
+        self.base.append ( ConvLayer(256, ch_list[0], kernel=1) ) ## DL: Transition Layer
         ch = ch_list[0]
         if downSamp[0] == 1:
-          self.base.append( nn.MaxPool2d(kernel_size=2, stride=2))
+          self.base.append( nn.MaxPool2d(kernel_size=2, stride=2)) ## DL: Transision Layer
 
-        # Second Block
+        # Second Block ## DL: Triple Block 2
         blk = HarDBlock(ch, gr[1], grmul, n_layers[1])
         ch = blk.get_out_ch()
         self.base.append ( blk )
