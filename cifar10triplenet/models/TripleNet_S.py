@@ -133,7 +133,7 @@ class TripleNet(nn.Module):
         grmul = 1.7
         drop_rate = 0.1
         
-        ch_list = [  128, 192, 256, 320, 720] ## DL: Why is ch_list different to troplenet_b
+        ch_list = [  128, 192, 256, 320, 720] ## DL: Why is ch_list different to triplenet_b
         gr       = [  32, 16, 20, 40, 160]
         n_layers = [   6, 16, 16, 16,  2]
         downSamp = [   1,  0,  1,  1,  0]

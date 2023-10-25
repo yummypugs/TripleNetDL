@@ -133,9 +133,11 @@ class TripleNet(nn.Module):
         grmul = 1.7
         drop_rate = 0.1
         
-        ch_list = [  160, 256, 320, 480, 1080]
+        #ch_list = [  160, 256, 320, 480, 1080] ## DL: This is also wrong, according to the paper, this should be [128, 192, 256, 320, 1080]
+        ch_list = [128, 192, 256, 320, 1080] ## DL: this should now be correct
         gr       = [  32, 16, 20, 40,160]
-        n_layers = [   6, 16, 18, 24,  2] ## DL: I think this is wrong!!
+        #n_layers = [   6, 16, 18, 24,  2] ## DL: I think this is wrong!!
+        n_layers = [   6, 16, 16, 16,  3] ## DL: According to the paper, this is the correct Layer list. We now get more correct paramters!
         downSamp = [   1,  0,  1,  1,  0]
         
         self.base = nn.ModuleList([])
