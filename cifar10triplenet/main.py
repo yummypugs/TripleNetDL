@@ -63,8 +63,8 @@ class Solver(object):
 
         self.model = triplenet_s().to(self.device)
         # self.model = triplenet_b().to(self.device)
-        num_params = sum(p.numel() for p in self.model.parameters() if p.requires_grad) ## This is our addition
-        print(f"The model has {num_params} trainable parameters.") ## This is our addition
+        num_params = sum(p.numel() for p in self.model.parameters() if p.requires_grad) ## DL: This is our addition
+        print(f"The model has {num_params} trainable parameters.") ## DL: This is our addition
 
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.lr)
         self.scheduler = optim.lr_scheduler.MultiStepLR(self.optimizer, milestones=[75, 150], gamma=0.5)
