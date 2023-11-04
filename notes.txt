@@ -1,1 +1,0 @@
-increase batch size instead of increasing learning rate... look at different batch sizes to see the difference in performance? 
