@@ -1,7 +1,9 @@
 # Efficient Convolutional Neural Networks on Raspberry Pi for Image Classification
 
 cifar10triplenet/main.py is the main file that we also worked on.
+
 cifar10triplenet/models/TripleNet_S.py is the main file we worked on.
+
 all .pth files are outputs from the various models we ran, they are only important when running the pretrain moniker. 
 
 ## Abstract
